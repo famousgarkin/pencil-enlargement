@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "dependencies": {
+    "phaser": "^2.3.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  },
+  "scripts": {
+    "start": "http-server -p 5000"
+  }
+}
