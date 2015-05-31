@@ -5,7 +5,10 @@ var pencilEnlargement = {
     }
 }
 
-pencilEnlargement.Pencil = function(game, scale, scaleIncrement) {
+pencilEnlargement.Pencil = function(game) {
+    var scale = 1
+    var scaleIncrement = 0.1
+    var scaleDecrement = 0.3
     var sprite = this.sprite = new Phaser.Sprite(game, game.world.centerX, game.world.centerY, 'pencil')
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
@@ -13,10 +16,9 @@ pencilEnlargement.Pencil = function(game, scale, scaleIncrement) {
     sprite.events.onInputDown.add(function () {
         scale += scaleIncrement
     })
-    var scaleDownIncrement = scaleIncrement * 3 / 1000
     sprite.update = function () {
         if (scale > 1) {
-            scale -= scaleDownIncrement * game.time.elapsed
+            scale -= scaleDecrement * game.time.physicsElapsed
         }
         sprite.scale.x = scale
         sprite.scale.y = scale
@@ -35,7 +37,7 @@ pencilEnlargement.Play.prototype = {
         this.load.image('pencil', 'pencil.png')
     },
     create: function() {
-        this.pencil = new pencilEnlargement.Pencil(this.game, 1, 0.1)
+        this.pencil = new pencilEnlargement.Pencil(this.game)
         this.game.add.existing(this.pencil.sprite)
     },
 }
