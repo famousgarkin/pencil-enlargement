@@ -9,7 +9,6 @@ pencilEnlargement.Pencil = function(game, scale, scaleIncrement) {
     var sprite = this.sprite = new Phaser.Sprite(game, game.world.centerX, game.world.centerY, 'pencil')
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
-    sprite.smoothed = false
     sprite.inputEnabled = true
     sprite.events.onInputDown.add(function () {
         scale += scaleIncrement
