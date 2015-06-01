@@ -30,13 +30,24 @@ pencilEnlargement.Play = function() {
 }
 pencilEnlargement.Play.prototype = {
     init: function() {
-        this.game.stage.backgroundColor = '#fff'
+        this.game.stage.backgroundColor = 0xffffff
         this.input.maxPointers = 1
     },
     preload: function() {
         this.load.image('pencil', 'pencil.png')
     },
     create: function() {
+        this.game.add.text(25, 20, 'Pencil Enlargement', {
+            font: '30pt Georgia',
+        })
+        this.game.add.text(25, 70, 'It works! Add inches in seconds!', {
+            font: '15pt Georgia',
+            fill: 'gray',
+        })
+        this.game.add.text(25, this.game.world.height - 100, 'Click the pencil to make it bigger.\nSpeed and persistence bring best results.\nEnlarge until satisfied, or till it crashes the browser or something.', {
+            font: '12pt Georgia',
+            fill: 'gray',
+        })
         this.pencil = new pencilEnlargement.Pencil(this.game)
         this.game.add.existing(this.pencil.sprite)
     },
